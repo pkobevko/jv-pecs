@@ -4,9 +4,7 @@ import core.mate.academy.model.Bulldozer;
 import core.mate.academy.model.Excavator;
 import core.mate.academy.model.Machine;
 import core.mate.academy.model.Truck;
-import core.mate.academy.model.Workable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -33,11 +31,11 @@ public class MachineServiceImpl implements MachineService<Machine> {
 
     @Override
     public void fill(List<? super Machine> machines, Machine value) {
-        Collections.fill(machines, value);
+        machines.replaceAll(ignored -> value);
     }
 
     @Override
     public void startWorking(List<? extends Machine> machines) {
-        machines.forEach(Workable::doWork);
+        machines.forEach(Machine::doWork);
     }
 }
